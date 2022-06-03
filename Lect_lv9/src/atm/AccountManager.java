@@ -1,8 +1,10 @@
 package atm;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class AccountManager {
+	private Random ran = new Random();
 	
 	public static AccountManager instance = new AccountManager();
 	private AccountManager() {}
@@ -22,11 +24,29 @@ public class AccountManager {
 			UserManager.instance.setUsersAccCnt(userCode, accCnt +1);
 			return true;
 		}
-		return false;
+		else {
+			System.out.println("계좌개설은 3개까지만 가능합니다.");
+			return false;
+		}
 	}
 	
 	private int createAccCode() {
-		return 0;
+		while(true) {
+			int rNum = ran.nextInt(8999) + 1000;
+			boolean check = true;
+			for(Account newAcc : this.accs) {
+				if (rNum == newAcc.getAccNum())
+					check = false;
+			}
+			if(check) {
+				return rNum;
+			}
+		}
+//		boolean check = false;
+//		int accCnt = UserManager.instance.getUsersAccCnt(userIndex);
+//		for(int i=0; i<accCnt; i++) {
+//			
+//		}
 	}
 	
 	public boolean deleteAcc(int userIndex, int delAccIdx) {

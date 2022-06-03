@@ -116,4 +116,11 @@ public class Bank {
 			System.out.println("°èÁÂ Ã¶È¸ ½ÇÆĞ");
 	}
 
+	public static void main(String[] args) {
+		
+		Bank b = new Bank();
+		b.run();
+
+	}
+
 }

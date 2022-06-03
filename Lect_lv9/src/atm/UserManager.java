@@ -1,8 +1,10 @@
 package atm;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class UserManager {
+	private Random ran = new Random();
 	
 	public static UserManager instance = new UserManager();
 	
@@ -31,6 +33,17 @@ public class UserManager {
 	}
 	
 	private int createCode() {
+//		while(true) {
+//			int rNum = ran.nextInt(8999) + 1000;
+//			boolean check = true;
+//			for(User newAcc : this.users) {
+//				if(rNum == newAcc.getAccCnt())
+//					check = false;
+//			}
+//			if(check) {
+//				return rNum;
+//			}
+//		}
 		return 0;
 	}
 	
