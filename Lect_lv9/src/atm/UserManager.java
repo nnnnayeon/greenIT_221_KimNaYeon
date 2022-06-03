@@ -43,7 +43,7 @@ public class UserManager {
 //			if(check) {
 //				return rNum;
 //			}
-//		}
+//		} 
 		return 0;
 	}
 	
