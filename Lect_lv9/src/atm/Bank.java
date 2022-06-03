@@ -99,17 +99,21 @@ public class Bank {
 	}
 	
 	private void createAcc() {
-//		AccountManager.instance.createAcc(log);
+		AccountManager.instance.createAcc(log);
 	}
 	
 	private void deleteAcc() {
+		// 보유 계좌 출력
+		UserManager.instance.printAllUsersAccList(log);
+		System.out.print("철회 대상 번호 입력: ");
+		int delIdx = scan.nextInt() -1;
 		
-	}
-
-	public static void main(String[] args) {
-		
-		
-
+		boolean result = AccountManager.instance.deleteAcc(log, delIdx);
+		if(result) {
+			System.out.println("계좌철회 완료");
+		}
+		else
+			System.out.println("계좌 철회 실패");
 	}
 
 }
