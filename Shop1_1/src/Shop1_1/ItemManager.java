@@ -8,6 +8,7 @@ public class ItemManager {
 	
 	private Vector<Item> itemList = new Vector<Item>();
 	private Vector<String> category = new Vector<String>();
+	private Vector<Cart> jangList = new Vector<Cart>();
 	
 	public void printCategory() {
 		System.out.println("-------------------");
@@ -24,6 +25,7 @@ public class ItemManager {
 		}
 	}
 	
+	
 	public void printItemList(int cateNum) {
 		int n = 0;
 		for(int i=0; i<this.itemList.size(); i++) {
@@ -31,6 +33,20 @@ public class ItemManager {
 				System.out.print("[" + n + "]");
 				this.itemList.get(i).print();
 				n++;
+			}
+		}
+	}
+	
+	public void printjang() {
+		for(int i=0; i<this.jangList.size(); i++) {
+			this.jangList.get(i).print();
+		}
+	}
+	
+	public void printjang(User u) {
+		for(int i=0; i<this.jangList.size(); i++) {
+			if(u.getId().equals(jangList.get(i).getUserId())) {
+				this.jangList.get(i).print();
 			}
 		}
 	}
@@ -66,8 +82,17 @@ public class ItemManager {
 	public void addCart(String usID, int cateNum, int itemNum) {
 		int n = 0;
 		Cart cart = new Cart();
-//		cart.getUserId() = usID;
-//		cart.setUserId(usID);
+		cart.setUserId(usID);
+		
+		for(int i=0; i<this.itemList.size(); i++) {
+			if(this.category.get(cateNum).equals(this.itemList.get(i).getCategory())) {
+				if(itemNum == n) {
+					cart.setItemName(this.itemList.get(i).getName());
+				}
+				n++;
+			}
+		}
+		this.jangList.add(cart);
 	}
 	
 	

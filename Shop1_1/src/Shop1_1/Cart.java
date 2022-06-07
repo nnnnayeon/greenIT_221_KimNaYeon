@@ -9,16 +9,19 @@ public class Cart {
 //		this.userId = userId;
 //		this.itemName = itemName;
 //	}
-//	
+	
 	public String getUserId() {
 		return this.userId;
 	}
-	public void setUserId() {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	
 	public String getItemName() {
 		return this.itemName;
+	}
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 	
 	public void print() {

@@ -45,20 +45,17 @@ public class UserManager {
 		String pw = scan.next();
 		
 		User delTemp = null;
-		for(int i=0; i<this.userList.size(); i++) {
-			if(id.equals(this.userList.get(i).getId()) && pw.equals(this.userList.get(i).getPw())) {
-//				delTemp = ;
-			}
-		}
-//		if(this.log != -1) {
-//			System.out.println("[remove] PW: ");
-//			String pw = scan.next();
-//			
-//			User delTemp = null;
-//			if(pw.equals(this.userList.get(log).getPw())) {
-//				
+//		for(int i=0; i<this.userList.size(); i++) {
+//			if(id.equals(this.userList.get(i).getId()) && pw.equals(this.userList.get(i).getPw())) {
+//				delTemp = i;
 //			}
 //		}
+		
+		for(User i : this.userList) {
+			if(id.equals(i.getId()) && pw.equals(i.getPw()))
+				delTemp = i;
+		}
+		this.userList.remove(delTemp);
 	}
 	
 	public boolean login() {

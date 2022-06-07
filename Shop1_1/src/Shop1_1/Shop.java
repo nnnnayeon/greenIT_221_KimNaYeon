@@ -21,7 +21,7 @@ public class Shop {
 			int sel = scan.nextInt();
 			
 			if(sel == 1) {um.join();}
-			else if(sel == 2) {}
+			else if(sel == 2) {um.remove();}
 			else if(sel == 3) {if(um.login()) loginMenu();}
 			else if(sel == 4) {um.logout();}
 			else if(sel == 0) {break;}
@@ -59,7 +59,20 @@ public class Shop {
 	}
 	
 	public void cartMenu() {
-		
+		boolean isRun = true;
+		while(isRun) {
+			System.out.println("[1] 내 장바구니");
+			System.out.println("[2] 삭제");
+			System.out.println("[3] 구입");
+			System.out.println("[0] 뒤로가기");
+			System.out.print("입력: ");
+			int sel = scan.nextInt();
+			
+			if(sel == 1) {im.printjang(um.getUserList().get(um.getLog()));}
+			else if(sel == 2) {}
+			else if(sel == 3) {}
+			else if(sel == 0) {break;}
+		}
 	}
 	
 	public void managerMenu() {
@@ -76,7 +89,7 @@ public class Shop {
 			if(sel == 1) {itemMenu();}
 			else if(sel == 2) {categoryMenu();}
 			else if(sel == 3) {}
-			else if(sel == 4) {}
+			else if(sel == 4) {userMenu();}
 			else if(sel == 0) {break;}
 		}
 	}
@@ -112,6 +125,23 @@ public class Shop {
 			else if(sel == 2) {im.addCategory();}
 			else if(sel == 3) {im.removeCategory();}
 			else if(sel == 0) {break;}
+		}
+	}
+	
+	public void userMenu() {
+		boolean isRun = true;
+		while(isRun) {
+			System.out.println("[1] 전체회원 출력");
+			System.out.println("[2] 회원 추가");
+			System.out.println("[3] 회원 삭제");
+			System.out.println("[0] 뒤로가기");
+			System.out.print("입력: ");
+			int sel = scan.nextInt();
+			
+			if(sel == 1) {um.printUser();}
+			else if(sel == 2) {}
+			else if(sel == 3) {}
+			else if(sel == 4) {break;}
 		}
 	}
 
