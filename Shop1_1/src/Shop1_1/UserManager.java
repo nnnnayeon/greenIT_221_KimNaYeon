@@ -9,6 +9,14 @@ public class UserManager {
 	private int log = -1;
 	private Vector<User> userList = new Vector<User>();
 	
+	public Vector<User> getUserList() {
+		return this.userList;
+	}
+	
+	public int getLog() {
+		return this.log;
+	}
+	
 	public void join() {
 		System.out.print("[join] ID: ");
 		String id = scan.next();
@@ -24,10 +32,10 @@ public class UserManager {
 		if(check) {
 			User temp = new User(id, pw, 0);
 			this.userList.add(temp);
-			System.out.println("È¸¿ø°¡ÀÔ ¿Ï·á");
+			System.out.println("íšŒì›ê°€ì… ì™„ë£Œ");
 		}
 		else
-			System.out.println("Áßº¹µÈ ¾ÆÀÌµğÀÔ´Ï´Ù.");
+			System.out.println("ì¤‘ë³µëœ ì•„ì´ë””ì…ë‹ˆë‹¤.");
 	}
 	
 	public void remove() {
@@ -39,7 +47,7 @@ public class UserManager {
 		User delTemp = null;
 		for(int i=0; i<this.userList.size(); i++) {
 			if(id.equals(this.userList.get(i).getId()) && pw.equals(this.userList.get(i).getPw())) {
-//				delTemp = this.userList;
+//				delTemp = ;
 			}
 		}
 //		if(this.log != -1) {
@@ -67,9 +75,9 @@ public class UserManager {
 		}
 		
 		if(this.log == -1)
-			System.out.println("È¸¿øÁ¤º¸¸¦ È®ÀÎÇÏ¼¼¿ä.");
+			System.out.println("íšŒì›ì •ë³´ë¥¼ í™•ì¸í•˜ì„¸ìš”.");
 		else {
-			System.out.println(this.userList.get(log).getId() + "´Ô ·Î±×ÀÎ");
+			System.out.println(this.userList.get(log).getId() + "ë‹˜ ë¡œê·¸ì¸");
 			return true;
 		}
 		return false;
@@ -77,7 +85,7 @@ public class UserManager {
 	
 	public void logout() {
 		if(this.log != -1) {
-			System.out.println(this.userList.get(log).getId() + "´Ô ·Î±×¾Æ¿ô");
+			System.out.println(this.userList.get(log).getId() + "ë‹˜ ë¡œê·¸ì•„ì›ƒ");
 			
 			this.log = -1;
 		}
