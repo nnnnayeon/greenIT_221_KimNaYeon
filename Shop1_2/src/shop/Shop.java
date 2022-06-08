@@ -96,7 +96,9 @@ public class Shop {
 			if (sel == 1) {
 				im.printCategory();
 			} else if (sel == 2) {
-
+				im.addCategory();
+			} else if (sel == 3) {
+				im.removeCategory();
 			} else if (sel == 0) {
 				run = false;
 			}
@@ -112,6 +114,8 @@ public class Shop {
 				im.printItemList();
 			} else if (sel == 2) {
 				im.addItem();
+			} else if (sel == 3) {
+				im.removeItem();
 			} else if (sel == 0) {
 				run = false;
 			}

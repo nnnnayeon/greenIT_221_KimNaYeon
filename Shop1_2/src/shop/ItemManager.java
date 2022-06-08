@@ -101,4 +101,32 @@ public class ItemManager {
 		this.jangList.add(temp);
 	}
 	
+	public void removeItem() {
+		printItemList();
+		System.out.println("index: ");
+		int idx = scan.nextInt();
+		
+		if(idx >= 0 && idx < this.itemList.size()) {
+			this.itemList.remove(idx);
+			System.out.println("아이템 삭제 완료.");
+		}
+		else
+			System.out.println("입력 오류");
+	}
+	
+	public void removeCategory() {
+		printCategory();
+		System.out.println("index: ");
+		int idx = scan.nextInt();
+		
+		if(idx >= 0 && idx < this.category.size()) {
+			this.category.remove(idx);
+			System.out.println("카테고리 삭제 완료");
+		}
+		else
+			System.out.println("입력 오류");
+	}
+	
+	
+	
 }
