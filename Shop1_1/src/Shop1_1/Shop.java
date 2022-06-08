@@ -69,7 +69,7 @@ public class Shop {
 			int sel = scan.nextInt();
 			
 			if(sel == 1) {im.printjang(um.getUserList().get(um.getLog()));}
-			else if(sel == 2) {}
+			else if(sel == 2) {im.removeJang();}
 			else if(sel == 3) {}
 			else if(sel == 0) {break;}
 		}
@@ -139,8 +139,8 @@ public class Shop {
 			int sel = scan.nextInt();
 			
 			if(sel == 1) {um.printUser();}
-			else if(sel == 2) {}
-			else if(sel == 3) {}
+			else if(sel == 2) {um.addUser();}
+			else if(sel == 3) {um.removeUser();}
 			else if(sel == 4) {break;}
 		}
 	}

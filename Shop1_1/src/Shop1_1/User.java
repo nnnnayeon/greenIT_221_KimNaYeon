@@ -18,6 +18,9 @@ public class User {
 	public String getPw() {
 		return this.pw;
 	}
+	public int getMoney() {
+		return this.money;
+	}
 	
 	public void print() {
 		System.out.println("[" + id + "]" + "ฑÝพื: " + money);

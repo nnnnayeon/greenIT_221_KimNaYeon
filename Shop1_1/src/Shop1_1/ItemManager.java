@@ -65,7 +65,16 @@ public class ItemManager {
 	}
 	
 	public void removeItem() {
+		printItemList();
+		System.out.print("index: ");
+		int idx = scan.nextInt();
 		
+		if(idx >= 0 && idx < this.itemList.size()) {
+			this.itemList.remove(idx);
+			System.out.println("아이템 삭제 완료");
+		}
+		else
+			System.out.println("입력 오류");
 	}
 	
 	public void addCategory() {
@@ -76,7 +85,16 @@ public class ItemManager {
 	}
 	
 	public void removeCategory() {
+		printCategory();
+		System.out.print("index: ");
+		int idx = scan.nextInt();
 		
+		if(idx >= 0 && idx < this.category.size()) {
+			this.category.remove(idx);
+			System.out.println("카테고리 삭제 완료");
+		}
+		else
+			System.out.println("입력 오류");
 	}
 
 	public void addCart(String usID, int cateNum, int itemNum) {
@@ -93,6 +111,18 @@ public class ItemManager {
 			}
 		}
 		this.jangList.add(cart);
+	}
+	
+	public void removeJang() {
+		printjang();
+		System.out.print("입력(index): ");
+		int idx = scan.nextInt();
+		if(idx >= 0 && idx < this.jangList.size()) {
+			this.jangList.remove(idx);
+			System.out.println("삭제 완료");
+		}
+		else
+			System.out.println("입력 오류");
 	}
 	
 	
