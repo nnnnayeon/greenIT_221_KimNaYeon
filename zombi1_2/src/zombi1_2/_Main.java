@@ -5,10 +5,10 @@ package zombi1_2;
 
 public class _Main {
 	public static void main(String[] args) {
-		new Game();
+//		new Game();
 		
-//		Game game = new Game();
-//		game.move();
+		Game game = new Game();
+		game.run();
 	}
 
 }
