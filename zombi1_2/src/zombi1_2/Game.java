@@ -82,6 +82,7 @@ public class Game {
 				}
 			}
 			else if(move == 2) {
+				System.out.println("게임을 종료합니다.");
 				break;
 			}
 		}

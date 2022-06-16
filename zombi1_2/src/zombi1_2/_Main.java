@@ -8,7 +8,7 @@ public class _Main {
 		new Game();
 		
 //		Game game = new Game();
-//		game.run();
+//		game.move();
 	}
 
 }
