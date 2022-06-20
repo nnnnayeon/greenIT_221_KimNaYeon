@@ -42,5 +42,26 @@ public class Student {
 			System.out.printf("%d) %s\n", i+1, this.subs.get(i));
 		}
 	}
+	
+	public void addSubs(Registration newRegistration) {
+		this.subs.add(newRegistration);
+	}
+	
+	public void delSubs(int num) {
+		this.subs.remove(num);
+	}
+	
+	public int subSize() {
+		return this.subs.size();
+	}
+	
+	public Subject getSubject(int subNum) {
+		for(int i=0; i<this.subs.size(); i++) {
+			if(i == subNum) {
+				return this.subs.get(i).getSubject();
+			}
+		}
+		return null;
+	}
 
 }

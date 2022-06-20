@@ -20,6 +20,21 @@ public class Registration {
 		this.regCode = regCode;
 		this.student = student;
 		this.subject = subject;
+		this.regDate = Timestamp.valueOf(LocalDateTime.now());
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return String.format("§§ %d/%s : %d¡° (%s)", this.regCode, this.subject.getTitle(), this.score, this.regDate);
+	}
+	
+	public Student getStudent() {
+		return this.student;
 	}
 
+	public Subject getSubject() {
+		return this.subject;
+	}
+	
 }
