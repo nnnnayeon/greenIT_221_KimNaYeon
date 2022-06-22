@@ -8,6 +8,7 @@ public class PlayerController {
 	static Scanner scan = new Scanner(System.in);
 	
 	public static int log = -1;
+	public boolean loginCheck = false;
 	
 	private static ArrayList<Player> players = new ArrayList<Player>();
 	
@@ -37,20 +38,20 @@ public class PlayerController {
 	}
 	
 	// 로그인
-	public void loginUser() {
-		System.out.print("ID: ");
-		String id = scan.next();
-		System.out.print("PW: ");
-		String pw = scan.next();
-		
-		log = checkLog(new Player(id, pw));
-		
-		if(log == -1)
-			System.out.println("회원정보를 확인하세요.");
-		else {
-			System.out.println("로그인 성공");
-		}
-	}
+//	public void loginUser() {
+//		System.out.print("ID: ");
+//		String id = scan.next();
+//		System.out.print("PW: ");
+//		String pw = scan.next();
+//		
+//		log = checkLog(new Player(id, pw));
+//		
+//		if(log == -1)
+//			System.err.println("회원정보를 확인하세요.");
+//		else {
+//			System.out.printf("%s 님 로그인 성공\n", players.get(log).getName());
+//		}
+//	}
 	
 	// 회원가입
 	public void joinUser() {
@@ -67,16 +68,20 @@ public class PlayerController {
 		if(check)
 			System.out.println("회원가입 완료");
 		else
-			System.out.println("중복된 아이디 입니다.");
+			System.err.println("중복된 아이디 입니다.");
 	}
 	
-	//
+	// 회원전체출력
 	public void printAllPlayer() {
 		System.out.println("---------------------------");
 		for(int i=0; i<this.players.size(); i++) {
 			System.out.printf("[%d] (%s / %s / %s) \n", i+1, players.get(i).getID(), players.get(i).getPW(), players.get(i).getName());
 		}
 		System.out.println("---------------------------");
+	}
+	
+	public ArrayList<Player> getPlayers(){
+		return this.players;
 	}
 
 }

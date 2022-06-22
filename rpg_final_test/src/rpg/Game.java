@@ -10,17 +10,35 @@ public class Game{
 	public static Scanner scan = new Scanner(System.in);
 	public static Random ran = new Random();
 	
+	public static int log = -1;
+	
+	PlayerController pc = new PlayerController();
 	public void run() {
-		PlayerController pc = new PlayerController();
 		
 		while(true) {
 			System.out.println("[1.로그인] [2.회원가입]");
 			System.out.println("[3.회원전체출력]");
 			int sel = scan.nextInt();
 			
-			if(sel == 1) {pc.loginUser();}
+			if(sel == 1) {login();}
 			else if(sel == 2) {pc.joinUser();}
 			else if(sel == 3) {pc.printAllPlayer();}
+		}
+	}
+	
+	public void login() {
+		System.out.print("ID: ");
+		String id = scan.next();
+		System.out.print("PW: ");
+		String pw = scan.next();
+		
+		log = pc.checkLog(new Player(id, pw));
+		
+		if(log == -1)
+			System.err.println("회원정보를 확인하세요.");
+		else {
+			System.out.printf("%s 님 로그인 성공\n", pc.getPlayers().get(log).getName());
+			GameStart();
 		}
 	}
 	
@@ -28,10 +46,10 @@ public class Game{
 		
 		while(true) {
 			
-			System.out.println("[1.유저관리] [2.길드관리]");
-			System.out.println("[3.상점] [4.창고관리]");
-			System.out.println("[5.스테이지] [6.전투]");
-			System.out.println("[7.저장] [8.로드] [0.종료]");
+			System.out.println("[1.길드관리]");
+			System.out.println("[2.상점] [3.창고관리]");
+			System.out.println("[4.스테이지] [5.전투]");
+			System.out.println("[6.저장] [7.로드] [0.종료]");
 			System.out.print("입력: ");
 			int sel = scan.nextInt();
 			
