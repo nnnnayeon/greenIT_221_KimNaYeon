@@ -9,7 +9,7 @@ class MainGame{
 	static Scanner scan = new Scanner(System.in);
 	static Random ran = new Random();
 	
-	public MainGame() { 
+	public MainGame() {
 		Player player = new Player();
 		
 		while(true) {
