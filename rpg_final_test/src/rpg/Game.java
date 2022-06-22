@@ -5,14 +5,29 @@ import java.util.Random;
 import java.util.Map;
 import java.util.HashMap;
 
-class MainGame{
-	static Scanner scan = new Scanner(System.in);
-	static Random ran = new Random();
+public class Game{
 	
-	public MainGame() { 
-		Player player = new Player();
+	public static Scanner scan = new Scanner(System.in);
+	public static Random ran = new Random();
+	
+	public void run() {
+		PlayerController pc = new PlayerController();
 		
 		while(true) {
+			System.out.println("[1.로그인] [2.회원가입]");
+			System.out.println("[3.회원전체출력]");
+			int sel = scan.nextInt();
+			
+			if(sel == 1) {pc.loginUser();}
+			else if(sel == 2) {pc.joinUser();}
+			else if(sel == 3) {pc.printAllPlayer();}
+		}
+	}
+	
+	public void GameStart() { 
+		
+		while(true) {
+			
 			System.out.println("[1.유저관리] [2.길드관리]");
 			System.out.println("[3.상점] [4.창고관리]");
 			System.out.println("[5.스테이지] [6.전투]");
@@ -39,10 +54,3 @@ class MainGame{
 	
 }
 
-public class GameManager {
-	public static void main(String[] args) {
-		new MainGame();
-	}
-	
-
-}
