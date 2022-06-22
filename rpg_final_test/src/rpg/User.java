@@ -1,12 +1,17 @@
 package rpg;
 
+import java.util.ArrayList;
+
 public class User {
 	private String id;
 	private String pw;
 	private String name;
-	private Player player;
+	private int money;
+//	private Player player;
 	
-//	public static int money;
+	private ArrayList<Player> players = new ArrayList<>();
+	
+	public static Inventory iven = new Inventory();
 	
 	public User(String id, String pw) {
 		this.id = id;
@@ -17,8 +22,8 @@ public class User {
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
-		this.player = new Player();
-		this.player.money = 100000;
+//		this.player = new Player();
+		this.money = 100000;
 	}
 	
 	public String getID() {
@@ -30,9 +35,17 @@ public class User {
 	public String getName() {
 		return this.name;
 	}
-	public Player getPlayer() {
-		return this.player;
+
+	public int getMoney() {
+		return money;
 	}
+
+	public ArrayList<Item> getItemList(){
+		return iven.itemList;
+	}
+//	public Player getPlayer() {
+//		return this.player;
+//	}
 	
 	
 }

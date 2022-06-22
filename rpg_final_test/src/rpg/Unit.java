@@ -13,7 +13,7 @@ public class Unit {
 	Item armor;
 	Item ring;
 	
-	public Unit(String name, int level, int hp, int maxHp, int att, int def, int exp) {
+	public Unit(String name, int level, int maxHp, int att, int def, int exp) {
 		this.name = name;
 		this.level = level;
 		this.maxHp = maxHp;
@@ -51,9 +51,31 @@ public class Unit {
 	}
 	
 	public void printStatus() {
-		System.out.printf("[이름: %s]", this.name);
-		System.out.printf("[레벨: %d]", this.level);
-		
+		System.out.print("[이름 : " + name + "]");
+		System.out.print(" [레벨 : " + level + "]");
+		if (ring != null) {
+			System.out.print(" [체력 : " + hp + " + " + ring.power);
+		} else {
+			System.out.print(" [체력 : " + hp);
+		}
+		if (ring != null) {
+			System.out.println(" / " + maxHp + " + " + ring.power + "]");
+		} else {
+			System.out.println(" / " + maxHp + "]");
+		}
+		if (weapon != null) {
+			System.out.print("[공격력 : " + att + " + " + weapon.power + "]");
+		} else {
+			System.out.print("[공격력 : " + att + "]");
+		}
+		if (armor != null) {
+			System.out.print(" [방어력 : " + def + " + " + armor.power + "]");
+		} else {
+			System.out.print(" [방어력 : " + def + "]");
+		}
+		System.out.println(" [파티중 : " + party + "]");
 	}
+	
+	
 	
 }

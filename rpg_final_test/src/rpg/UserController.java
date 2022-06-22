@@ -10,6 +10,23 @@ public class UserController {
 	
 	private static ArrayList<User> users = new ArrayList<User>();
 	
+	private static UserController instance = new UserController();
+	private UserController() {}
+	
+	public static UserController getInstance() {
+		return instance;
+	}
+	
+	
+	
+	public static ArrayList<User> getUsers() {
+		return users;
+	}
+
+	public static void setUsers(ArrayList<User> users) {
+		UserController.users = users;
+	}
+
 	// 아이디 중복확인
 	public boolean addUser(User user) {
 		boolean check = true;
@@ -35,11 +52,12 @@ public class UserController {
 //		return -1;
 //	}
 	
-	public int loginUser(User user) {
+	public int loginUser(String id, String pw) {
+		
 		int log = -1;
 		for(int i=0; i<this.users.size(); i++) {
 			User u = this.users.get(i);
-			if(u.getID().equals(user.getID()) && u.getPW().equals(user.getPW()))
+			if(u.getID().equals(id) && u.getPW().equals(pw))
 				log = i;
 		}
 		return log;
@@ -90,8 +108,6 @@ public class UserController {
 		System.out.println("---------------------------");
 	}
 	
-	public ArrayList<User> getUsers(){
-		return this.users;
-	}
+	
 
 }

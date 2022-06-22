@@ -10,14 +10,15 @@ public class Game {
 	public static Scanner scan = new Scanner(System.in);
 	public static Random ran = new Random();
 	public static int log = -1;
+	public static boolean run = true;
 
-	UserController uc = new UserController();
+//	UserController uc = new UserController();
 	Inventory iv = new Inventory();
 	Shop shop = new Shop();
 
 	public void run() {
 
-		while (true) {
+		while (run) {
 			System.out.println("[1.로그인] [2.회원가입]");
 			System.out.println("[3.회원전체출력]");
 			int sel = scan.nextInt();
@@ -28,18 +29,25 @@ public class Game {
 				System.out.print("PW: ");
 				String pw = scan.next();
 				
-//				log = uc.loginUser();
+//				log = uc.loginUser(id, pw);
+				
+				if(log == -1)
+					System.err.println("회원정보를 확인하세요.");
+				else {
+//					System.out.printf("%s 님 로그인 성공\n", uc.getUsers().get(log).getName());
+					GameStart(log);
+				}
 			} else if (sel == 2) {
-				uc.joinUser();
+//				uc.joinUser();
 			} else if (sel == 3) {
-				uc.printAllPlayer();
+//				uc.printAllPlayer();
 			}
 		}
 	}
 
-	public void GameStart() {
+	public void GameStart(int log) {
 
-		while (true) {
+		while (run) {
 
 			System.out.println("[1.길드관리]");
 			System.out.println("[2.상점] [3.창고관리]");
@@ -49,7 +57,7 @@ public class Game {
 			int sel = scan.nextInt();
 
 			if (sel == 1) {} 
-			else if (sel == 2) {shop.printShop();} 
+			else if (sel == 2) {shop.printShop(log);} 
 			else if (sel == 3) {iv.inventoryMenu();} 
 			else if (sel == 4) {} 
 			else if (sel == 5) {} 
@@ -57,7 +65,7 @@ public class Game {
 			else if (sel == 7) {} 
 			else if (sel == 8) {} 
 			else if (sel == 0) {
-				
+				this.run = false;
 			}
 
 		}

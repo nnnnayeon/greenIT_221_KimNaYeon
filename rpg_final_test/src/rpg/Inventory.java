@@ -35,5 +35,9 @@ public class Inventory {
 	public void equipMenu() {
 		printItemList();
 	}
+	
+	public void addItem(Item item) {
+		itemList.add(item);
+	}
 
 }
