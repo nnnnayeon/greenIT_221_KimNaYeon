@@ -10,63 +10,63 @@ public class Shop {
 	public Shop() {
 		 Item temp = new Item();
 		 temp.kind = Item.WEAPON;
-		 temp.name = "³ª¹«°Ë";
+		 temp.name = "ë‚˜ë¬´ê²€";
 		 temp.power = 3;
 		 temp.price = 1000;
 		 itemList.add(temp);
 		 
 		 temp = new Item();
 		 temp.kind = Item.WEAPON;
-		 temp.name = "Ã¶°Ë";
+		 temp.name = "ì² ê²€";
 		 temp.power = 5;
 		 temp.price = 2000;
 		 itemList.add(temp);
 		 
 		 temp = new Item();
 		 temp.kind = Item.WEAPON;
-		 temp.name = "·¹ÀÌÇÇ¾î";
+		 temp.name = "ë ˆì´í”¼ì–´";
 		 temp.power = 7;
 		 temp.price = 2500;
 		 itemList.add(temp);
 		 
 		 temp = new Item();
 		 temp.kind = Item.ARMOR;
-		 temp.name = "Æ¼¼ÅÃ÷";
+		 temp.name = "í‹°ì…”ì¸ ";
 		 temp.power = 1;
 		 temp.price = 300;
 		 itemList.add(temp);
 		 
 		 temp = new Item();
 		 temp.kind = Item.ARMOR;
-		 temp.name = "°¡Á×°©¿Ê";
+		 temp.name = "ê°€ì£½ê°‘ì˜·";
 		 temp.power = 4;
 		 temp.price = 800;
 		 itemList.add(temp);
 		 
 		 temp = new Item();
 		 temp.kind = Item.ARMOR;
-		 temp.name = "°­Ã¶°©¿Ê";
+		 temp.name = "ê°•ì² ê°‘ì˜·";
 		 temp.power = 7;
 		 temp.price = 1500;
 		 itemList.add(temp);
 		 
 		 temp = new Item();
 		 temp.kind = Item.RING;
-		 temp.name = "Àº¹İÁö";
+		 temp.name = "ì€ë°˜ì§€";
 		 temp.power = 7;
 		 temp.price = 3000;
 		 itemList.add(temp);
 		 
 		 temp = new Item();
 		 temp.kind = Item.RING;
-		 temp.name = "±İ¹İÁö";
+		 temp.name = "ê¸ˆë°˜ì§€";
 		 temp.power = 17;
 		 temp.price = 6000;
 		 itemList.add(temp);
 		 
 		 temp = new Item();
 		 temp.kind = Item.RING;
-		 temp.name = "´ÙÀÌ¾Æ¹İÁö";
+		 temp.name = "ë‹¤ì´ì•„ë°˜ì§€";
 		 temp.power = 35;
 		 temp.price = 20000;
 		 itemList.add(temp);
@@ -75,30 +75,30 @@ public class Shop {
 	public void printShop(int log) {
 		User user = instance.getUsers().get(log);
 		
-		String[] menu = {"¹«±â", "°©¿Ê", "¹İÁö"};
+		String[] menu = {"ë¬´ê¸°", "ê°‘ì˜·", "ë°˜ì§€"};
 		while(true) {
-			System.out.println("-----------»óÁ¡-----------");
+			System.out.println("-----------ìƒì -----------");
 			printMenu(menu);
-			System.out.println("0) µÚ·Î°¡±â");
+			System.out.println("0) ë’¤ë¡œê°€ê¸°");
 			int sel = Game.scan.nextInt();
 			
 			if(sel == 0)
 				return;
 			while(true) {
 				if(sel == Item.WEAPON) {
-					System.out.println(">>>>> ¹«±â");
+					System.out.println(">>>>> ë¬´ê¸°");
 				}
 				else if(sel == Item.ARMOR) {
-					System.out.println(">>>>> ¹æ¾î±¸");
+					System.out.println(">>>>> ë°©ì–´êµ¬");
 				} 
 				else if(sel == Item.RING) {
-					System.out.println(">>>>> ¹İÁö");
+					System.out.println(">>>>> ë°˜ì§€");
 				}
 				printItems(sel);
 				
-				System.out.printf("-> ¼ÒÀ¯ÇÑ °ñµå: %d\n", instance.getUsers().get(log).getMoney());
-				System.out.println("[0.µÚ·Î°¡±â]");
-				System.out.print("±¸ÀÔÇÒ ¾ÆÀÌÅÛ: ");
+				System.out.printf("-> ì†Œìœ í•œ ê³¨ë“œ: %d\n", user.getMoney());
+				System.out.println("[0.ë’¤ë¡œê°€ê¸°]");
+				System.out.print("êµ¬ì…í•  ì•„ì´í…œ: ");
 				int num = Game.scan.nextInt();
 				
 				if(num == 0) {break;}
@@ -110,7 +110,8 @@ public class Shop {
 							user.iven.addItem(itemList.get(i));
 							user.setMoney(user.getMoney() - itemList.get(i).price);
 							
-							System.out.printf("[%s] À» ±¸ÀÔÇß½À´Ï´Ù.", this.itemList.get(i).name);
+							System.out.printf("[%s] ì„ êµ¬ì…í–ˆìŠµë‹ˆë‹¤.\n", this.itemList.get(i).name);
+							System.out.println();
 						}
 					}
 				}
@@ -133,9 +134,9 @@ public class Shop {
 			if(itemList.get(i).kind != sel)
 				continue;
 			System.out.printf("%d)", cnt + 1);
-			System.out.printf("[ÀÌ¸§: %s] ", itemList.get(i).name);
-			System.out.printf("[´É·Â: %s] ", itemList.get(i).power);
-			System.out.printf("[°¡°İ: %s]", itemList.get(i).price);
+			System.out.printf("[ì´ë¦„: %s] ", itemList.get(i).name);
+			System.out.printf("[ëŠ¥ë ¥: %s] ", itemList.get(i).power);
+			System.out.printf("[ê°€ê²©: %s]", itemList.get(i).price);
 			System.out.println();
 			cnt ++;
 		}

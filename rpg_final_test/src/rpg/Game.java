@@ -7,6 +7,8 @@ import java.util.HashMap;
 
 public class Game {
 
+	UserController instance = UserController.getInstance();
+	
 	public static Scanner scan = new Scanner(System.in);
 	public static Random ran = new Random();
 	public static int log = -1;
@@ -15,12 +17,13 @@ public class Game {
 //	UserController uc = new UserController();
 	Inventory iv = new Inventory();
 	Shop shop = new Shop();
+	Guild guild = new Guild();
 
 	public void run() {
 
-		while (run) {
-			System.out.println("[1.·Î±×ÀÎ] [2.È¸¿ø°¡ÀÔ]");
-			System.out.println("[3.È¸¿øÀüÃ¼Ãâ·Â]");
+		while (true) {
+			System.out.println("[1.ë¡œê·¸ì¸] [2.íšŒì›ê°€ì…]");
+			System.out.println("[3.íšŒì›ì „ì²´ì¶œë ¥]");
 			int sel = scan.nextInt();
 
 			if (sel == 1) {
@@ -29,43 +32,44 @@ public class Game {
 				System.out.print("PW: ");
 				String pw = scan.next();
 				
-				log = UserController.getInstance().loginUser(id, pw);
+				log = instance.loginUser(id, pw);
 				
 				if(log == -1)
-					System.err.println("È¸¿øÁ¤º¸¸¦ È®ÀÎÇÏ¼¼¿ä.");
+					System.err.println("íšŒì›ì •ë³´ë¥¼ í™•ì¸í•˜ì„¸ìš”.");
 				else {
-					System.out.printf("%s ´Ô ·Î±×ÀÎ ¼º°ø\n", UserController.getInstance().getUsers().get(log).getName());
+					System.out.printf("%s ë‹˜ ë¡œê·¸ì¸ ì„±ê³µ\n", instance.getUsers().get(log).getName());
 					GameStart(log);
 				}
 			} else if (sel == 2) {
-				UserController.getInstance().joinUser();
+				instance.joinUser();
 			} else if (sel == 3) {
-				UserController.getInstance().printAllPlayer();
+				instance.printAllPlayer();
 			}
 		}
 	}
 
 	public void GameStart(int log) {
 
-		while (run) {
+		while (true) {
 
-			System.out.println("[1.±æµå°ü¸®]");
-			System.out.println("[2.»óÁ¡] [3.Ã¢°í°ü¸®]");
-			System.out.println("[4.ÀüÅõ]");
-			System.out.println("[5.ÀúÀå] [6.·Îµå] [0.Á¾·á]");
-			System.out.print("ÀÔ·Â: ");
+			System.out.println("[1.ê¸¸ë“œê´€ë¦¬]");
+			System.out.println("[2.ìƒì ] [3.ì°½ê³ ê´€ë¦¬]");
+			System.out.println("[4.ì „íˆ¬]");
+			System.out.println("[5.ì €ì¥] [6.ë¡œë“œ] [0.ì¢…ë£Œ]");
+			System.out.print("ì…ë ¥: ");
 			int sel = scan.nextInt();
 
-			if (sel == 1) {} 
+			if (sel == 1) {guild.guildMenu(log);} 
 			else if (sel == 2) {shop.printShop(log);} 
-			else if (sel == 3) {iv.inventoryMenu();} 
+			else if (sel == 3) {iv.inventoryMenu(log);} 
 			else if (sel == 4) {} 
 			else if (sel == 5) {} 
 			else if (sel == 6) {} 
 			else if (sel == 7) {} 
 			else if (sel == 8) {} 
 			else if (sel == 0) {
-				this.run = false;
+				break;
+//				this.run = false;
 			}
 
 		}

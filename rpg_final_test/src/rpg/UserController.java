@@ -27,7 +27,7 @@ public class UserController {
 		UserController.users = users;
 	}
 
-	// ¾ÆÀÌµğ Áßº¹È®ÀÎ
+	// ì•„ì´ë”” ì¤‘ë³µí™•ì¸
 	public boolean addUser(User user) {
 		boolean check = true;
 		for(User p : this.users) {
@@ -63,7 +63,7 @@ public class UserController {
 		return log;
 	}
 	
-	// ·Î±×ÀÎ
+	// ë¡œê·¸ì¸
 //	public boolean loginUser() {
 //		System.out.print("ID: ");
 //		String id = Game.scan.next();
@@ -73,15 +73,15 @@ public class UserController {
 //		log = checkLog(new User(id, pw));
 //		
 //		if(log == -1)
-//			System.err.println("È¸¿øÁ¤º¸¸¦ È®ÀÎÇÏ¼¼¿ä.");
+//			System.err.println("íšŒì›ì •ë³´ë¥¼ í™•ì¸í•˜ì„¸ìš”.");
 //		else {
-//			System.out.printf("%s ´Ô ·Î±×ÀÎ ¼º°ø\n", users.get(log).getName());
+//			System.out.printf("%s ë‹˜ ë¡œê·¸ì¸ ì„±ê³µ\n", users.get(log).getName());
 //			return true;
 //		}
 //		return false;
 //	}
 	
-	// È¸¿ø°¡ÀÔ
+	// íšŒì›ê°€ì…
 	public void joinUser() {
 		System.out.print("ID: ");
 		String id = Game.scan.next();
@@ -94,12 +94,12 @@ public class UserController {
 		
 		boolean check = addUser(user);
 		if(check)
-			System.out.println("È¸¿ø°¡ÀÔ ¿Ï·á");
+			System.out.println("íšŒì›ê°€ì… ì™„ë£Œ");
 		else
-			System.err.println("Áßº¹µÈ ¾ÆÀÌµğ ÀÔ´Ï´Ù.");
+			System.err.println("ì¤‘ë³µëœ ì•„ì´ë”” ì…ë‹ˆë‹¤.");
 	}
 	
-	// È¸¿øÀüÃ¼Ãâ·Â
+	// íšŒì›ì „ì²´ì¶œë ¥
 	public void printAllPlayer() {
 		System.out.println("---------------------------");
 		for(int i=0; i<this.users.size(); i++) {

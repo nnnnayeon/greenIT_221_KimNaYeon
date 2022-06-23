@@ -4,36 +4,44 @@ import java.util.ArrayList;
 
 public class Inventory {
 	ArrayList<Item> itemList = new ArrayList<>();
+	UserController instance = UserController.getInstance();
 	
-	public void inventoryMenu() {
-		String[] menu = {"Âø¿ë", "ÆÇ¸Å"};
+	public void inventoryMenu(int log) {
+		String[] menu = {"ì°©ìš©", "íŒë§¤"};
 		while(true) {
-			System.out.println("-----------ÀÎº¥¸Ş´º-----------");
+			System.out.println("-----------ì¸ë²¤ë©”ë‰´-----------");
 			Shop.printMenu(menu);
-			System.out.println("0) µÚ·Î°¡±â");
+			System.out.println("0) ë’¤ë¡œê°€ê¸°");
 			int sel = Game.scan.nextInt();
 			
 			if(sel == 0) {break;}
-			else if(sel == 1) {equipMenu();}
+			else if(sel == 1) {equipMenu(log);}
 			else if(sel == 2) {}
 			
 		}
 	}
 	
-	public void printItemList() {
-		System.out.println(">>>>> ¾ÆÀÌÅÛ¸®½ºÆ®");
+	public void printItemList(int log) {
+		User user = instance.getUsers().get(log);
+		
+		System.out.println(">>>>> ì•„ì´í…œë¦¬ìŠ¤íŠ¸");
 		for(int i=0; i<itemList.size(); i++) {
 			System.out.printf("%d)", i+1);
-			System.out.printf("[ÀÌ¸§: %s] ", itemList.get(i).name);
-			System.out.printf("[´É·Â: %s] ", itemList.get(i).power);
-			System.out.printf("[°¡°İ: %s]", itemList.get(i).price);
+			System.out.printf("[ì´ë¦„: %s] ", user.iven.itemList.get(log).name);
+			System.out.printf("[ëŠ¥ë ¥: %d] ", user.iven.itemList.get(log).power);
+			System.out.printf("[ê°€ê²©: %d]", user.iven.itemList.get(log).price);
+			
+//			System.out.printf("[ì´ë¦„: %s] ", itemList.get(i).name);
+//			System.out.printf("[ëŠ¥ë ¥: %d] ", itemList.get(i).power);
+//			System.out.printf("[ê°€ê²©: %d]", itemList.get(i).price);
 			System.out.println();
 		}
 		
 	}
 	
-	public void equipMenu() {
-		printItemList();
+	public void equipMenu(int log) {
+		printItemList(log);
+		
 	}
 	
 	public void addItem(Item item) {

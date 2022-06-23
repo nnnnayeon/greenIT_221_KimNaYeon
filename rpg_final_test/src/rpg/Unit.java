@@ -51,12 +51,12 @@ public class Unit {
 	}
 	
 	public void printStatus() {
-		System.out.print("[ÀÌ¸§ : " + name + "]");
-		System.out.print(" [·¹º§ : " + level + "]");
+		System.out.print("[ì´ë¦„ : " + name + "]");
+		System.out.print(" [ë ˆë²¨ : " + level + "]");
 		if (ring != null) {
-			System.out.print(" [Ã¼·Â : " + hp + " + " + ring.power);
+			System.out.print(" [ì²´ë ¥ : " + hp + " + " + ring.power);
 		} else {
-			System.out.print(" [Ã¼·Â : " + hp);
+			System.out.print(" [ì²´ë ¥ : " + hp);
 		}
 		if (ring != null) {
 			System.out.println(" / " + maxHp + " + " + ring.power + "]");
@@ -64,16 +64,31 @@ public class Unit {
 			System.out.println(" / " + maxHp + "]");
 		}
 		if (weapon != null) {
-			System.out.print("[°ø°İ·Â : " + att + " + " + weapon.power + "]");
+			System.out.print("[ê³µê²©ë ¥ : " + att + " + " + weapon.power + "]");
 		} else {
-			System.out.print("[°ø°İ·Â : " + att + "]");
+			System.out.print("[ê³µê²©ë ¥ : " + att + "]");
 		}
 		if (armor != null) {
-			System.out.print(" [¹æ¾î·Â : " + def + " + " + armor.power + "]");
+			System.out.print(" [ë°©ì–´ë ¥ : " + def + " + " + armor.power + "]");
 		} else {
-			System.out.print(" [¹æ¾î·Â : " + def + "]");
+			System.out.print(" [ë°©ì–´ë ¥ : " + def + "]");
 		}
-		System.out.println(" [ÆÄÆ¼Áß : " + party + "]");
+		System.out.println(" [íŒŒí‹°ì¤‘ : " + party + "]");
+	}
+	
+	public void printEquitedItem() {
+		if(this.weapon == null)
+			System.out.println("[ë¬´ê¸° : ì—†ìŒ]");
+		else
+			System.out.printf("[ë¬´ê¸° : %s]\n", this.weapon.name);
+		if(this.armor == null)
+			System.out.println("[ë°©ì–´êµ¬ : ì—†ìŒ]");
+		else
+			System.out.printf("[ë°©ì–´êµ¬ : %s]\n", this.armor.name);
+		if(this.ring == null)
+			System.out.println("[ë°˜ì§€ : ì—†ìŒ]");
+		else
+			System.out.printf("[ë°˜ì§€ : %s]\n", this.ring.name);
 	}
 	
 	
