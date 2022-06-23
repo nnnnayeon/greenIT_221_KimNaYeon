@@ -9,7 +9,7 @@ public class Guild {
 	
 //	UserController instance = UserController.getInstance();
 	
-	public void setGuild(User u) {
+	public Guild() {
 		Unit temp = new Unit("호랑이", 1, 100, 10, 5, 0);
 		this.guildList.add(temp);
 		temp = new Unit("강아지", 1, 80, 7, 3, 0);
@@ -20,7 +20,7 @@ public class Guild {
 		this.guildList.add(temp);
 		temp = new Unit("돼지", 1, 200, 4, 8, 0);
 		this.guildList.add(temp);
-		temp = new Unit("윤선주", 1, 120, 11, 7, 0);
+		temp = new Unit("윤선주", 1, 120, 18, 7, 0);
 		this.guildList.add(temp);
 
 	}
@@ -34,7 +34,7 @@ public class Guild {
 			
 			if(sel == 1) {
 				printAllGuild(u);}
-			else if(sel == 2) {}
+			else if(sel == 2) {buyGuild(u);}
 			else if(sel == 3) {}
 			else if(sel == 4) {}
 			else if(sel == 5) {}
@@ -45,7 +45,6 @@ public class Guild {
 	
 	public void printAllGuild(User u) {
 		System.out.println("-----------------------------");
-		System.out.println(this.guildList.size());
 		System.out.printf("[골드 : %d]\n", u.getMoney());
 		System.out.println("-------------길드원------------");
 		for(int i=0; i<this.guildList.size(); i++) {
@@ -55,6 +54,36 @@ public class Guild {
 			System.out.println();
 		}
 		System.out.println("-----------------------------");
+	}
+	
+	public void buyGuild(User u) {
+		while(true) {
+			if(u.getMoney() < 5000) {
+				System.err.println("골드가 부족합니다.");
+				return;
+			}
+			printAllGuild(u);
+			System.out.print("추가할 길드원 입력 [0.뒤로가기] : ");
+			int sel = Game.scan.nextInt() -1;
+			
+			if(sel == -1)
+				break;
+			if(sel >= 0 && sel < guildList.size()) {
+				u.getPartyList().add(this.guildList.get(sel));
+				u.setMoney(u.getMoney() - 5000);
+				System.out.printf("[%s] 길드원을 추가합니다.\n", this.guildList.get(sel).name);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+			else
+				System.err.println("잘못된 입력입니다.");
+		}
+		
+		
 	}
 
 }

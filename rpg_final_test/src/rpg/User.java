@@ -11,6 +11,8 @@ public class User {
 	
 	private ArrayList<Player> players = new ArrayList<>();
 	private ArrayList<Item> itemList = new ArrayList<>();
+	
+	private ArrayList<Unit> myGuildList = new ArrayList<>();
 	private ArrayList<Unit> partyList = new ArrayList<>();
 //	private Unit[] partyList;
 	

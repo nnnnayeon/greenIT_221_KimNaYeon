@@ -18,6 +18,7 @@ public class Game {
 	Inventory iv = new Inventory();
 	Shop shop = new Shop();
 	Guild guild = new Guild();
+	
 
 	public void run() {
 
@@ -37,6 +38,7 @@ public class Game {
 				if(u == null)
 					System.err.println("회원정보를 확인하세요.");
 				else {
+					
 					System.out.printf("%s 님 로그인 성공\n", u.getName());
 					GameStart(u);
 				}
