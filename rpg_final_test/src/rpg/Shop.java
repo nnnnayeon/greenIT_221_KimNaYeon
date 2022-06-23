@@ -90,7 +90,7 @@ public class Shop {
 				}
 				else if(sel == Item.ARMOR) {
 					System.out.println(">>>>> 방어구");
-				}
+				} 
 				else if(sel == Item.RING) {
 					System.out.println(">>>>> 반지");
 				}
