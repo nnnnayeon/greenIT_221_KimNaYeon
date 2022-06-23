@@ -16,7 +16,7 @@ public class Inventory {
 			
 			if(sel == 0) {break;}
 			else if(sel == 1) {equipMenu(u);}
-			else if(sel == 2) {}
+			else if(sel == 2) {sellMenu(u);}
 			
 		}
 	}
@@ -39,8 +39,28 @@ public class Inventory {
 		
 	}
 	
-//	public void addItem(Item item) {
-//		itemList.add(item);
-//	}
-
+	public void sellMenu(User u) {
+		while(true) {
+			printItemList(u);
+			System.out.printf("[골드 : %d]\n", u.getMoney());
+			System.out.print("판매할 아이템 [0.뒤로가기] : ");
+			int sel = Game.scan.nextInt() -1;
+			
+			if(sel == -1)
+				break;
+			if(sel >= 0 && sel < u.getItemList().size()) {
+				u.getItemList().remove(sel);
+				System.out.printf("[%s] 를 판매합니다.\n", u.getItemList().get(sel-1).name);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+			
+			
+		}
+	}
+	
 }

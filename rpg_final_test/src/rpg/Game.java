@@ -14,11 +14,9 @@ public class Game {
 	public static int log = -1;
 	public static boolean run = true;
 
-//	UserController uc = new UserController();
 	Inventory iv = new Inventory();
 	Shop shop = new Shop();
 	Guild guild = new Guild();
-	
 
 	public void run() {
 
@@ -40,7 +38,7 @@ public class Game {
 				else {
 					
 					System.out.printf("%s 님 로그인 성공\n", u.getName());
-					GameStart(u);
+					gameStart(u);
 				}
 			} else if (sel == 2) {
 				instance.joinUser();
@@ -50,7 +48,7 @@ public class Game {
 		}
 	}
 
-	public void GameStart(User u) {
+	public void gameStart(User u) {
 
 		while (true) {
 
@@ -61,7 +59,9 @@ public class Game {
 			System.out.print("입력: ");
 			int sel = scan.nextInt();
 
-			if (sel == 1) {guild.guildMenu(u);} 
+			if (sel == 1) {
+				guild.guildMenu(u);
+			} 
 			else if (sel == 2) {shop.printShop(u);} 
 			else if (sel == 3) {iv.inventoryMenu(u);} 
 			else if (sel == 4) {} 
@@ -71,7 +71,6 @@ public class Game {
 			else if (sel == 8) {} 
 			else if (sel == 0) {
 				break;
-//				this.run = false;
 			}
 
 		}

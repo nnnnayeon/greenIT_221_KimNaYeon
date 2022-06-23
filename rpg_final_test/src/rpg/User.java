@@ -11,10 +11,9 @@ public class User {
 	
 	private ArrayList<Player> players = new ArrayList<>();
 	private ArrayList<Item> itemList = new ArrayList<>();
-	
-	private ArrayList<Unit> myGuildList = new ArrayList<>();
 	private ArrayList<Unit> partyList = new ArrayList<>();
-//	private Unit[] partyList;
+//	private Party party = new Party(); ///////////////////////////////
+	private ArrayList<Unit> myGuildList = new ArrayList<>();
 	
 	public static Inventory iven = new Inventory();
 	
@@ -59,13 +58,15 @@ public class User {
 		this.partyList = partyList;
 	}
 	
+	public ArrayList<Unit> getMyGuildList(){
+		return myGuildList;
+	}
+	public void setMyGuildList(ArrayList<Unit> myGuildList) {
+		this.myGuildList = myGuildList;
+	}
+	
 	public int partyListSize() {
 		return this.partyList.size();
 	}
-	
-//	public Player getPlayer() {
-//		return this.player;
-//	}
-	
 	
 }

@@ -17,8 +17,6 @@ public class UserController {
 		return instance;
 	}
 	
-	
-	
 	public static ArrayList<User> getUsers() {
 		return users;
 	}
