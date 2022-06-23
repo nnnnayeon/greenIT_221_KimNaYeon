@@ -10,6 +10,9 @@ public class User {
 //	private Player player;
 	
 	private ArrayList<Player> players = new ArrayList<>();
+	private ArrayList<Item> itemList = new ArrayList<>();
+	private ArrayList<Unit> partyList = new ArrayList<>();
+//	private Unit[] partyList;
 	
 	public static Inventory iven = new Inventory();
 	
@@ -44,8 +47,20 @@ public class User {
 	}
 
 	public ArrayList<Item> getItemList(){
-		return iven.itemList;
+		return itemList;
 	}
+	
+	public ArrayList<Unit> getPartyList(){
+		return partyList;
+	}
+	public void setPartyList(ArrayList<Unit> partyList) {
+		this.partyList = partyList;
+	}
+	
+	public int partyListSize() {
+		return this.partyList.size();
+	}
+	
 //	public Player getPlayer() {
 //		return this.player;
 //	}

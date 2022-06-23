@@ -32,13 +32,13 @@ public class Game {
 				System.out.print("PW: ");
 				String pw = scan.next();
 				
-				log = instance.loginUser(id, pw);
+				User u = instance.loginUser(id, pw);
 				
-				if(log == -1)
+				if(u == null)
 					System.err.println("회원정보를 확인하세요.");
 				else {
-					System.out.printf("%s 님 로그인 성공\n", instance.getUsers().get(log).getName());
-					GameStart(log);
+					System.out.printf("%s 님 로그인 성공\n", u.getName());
+					GameStart(u);
 				}
 			} else if (sel == 2) {
 				instance.joinUser();
@@ -48,7 +48,7 @@ public class Game {
 		}
 	}
 
-	public void GameStart(int log) {
+	public void GameStart(User u) {
 
 		while (true) {
 
@@ -59,9 +59,9 @@ public class Game {
 			System.out.print("입력: ");
 			int sel = scan.nextInt();
 
-			if (sel == 1) {guild.guildMenu(log);} 
-			else if (sel == 2) {shop.printShop(log);} 
-			else if (sel == 3) {iv.inventoryMenu(log);} 
+			if (sel == 1) {guild.guildMenu(u);} 
+			else if (sel == 2) {shop.printShop(u);} 
+			else if (sel == 3) {iv.inventoryMenu(u);} 
 			else if (sel == 4) {} 
 			else if (sel == 5) {} 
 			else if (sel == 6) {} 

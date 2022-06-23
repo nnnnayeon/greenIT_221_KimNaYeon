@@ -72,8 +72,8 @@ public class Shop {
 		 itemList.add(temp);
 	}
 	
-	public void printShop(int log) {
-		User user = instance.getUsers().get(log);
+	public void printShop(User u) {
+//		User user = instance.getUsers().get(log);
 		
 		String[] menu = {"무기", "갑옷", "반지"};
 		while(true) {
@@ -96,7 +96,7 @@ public class Shop {
 				}
 				printItems(sel);
 				
-				System.out.printf("-> 소유한 골드: %d\n", user.getMoney());
+				System.out.printf("-> 소유한 골드: %d\n", u.getMoney());
 				System.out.println("[0.뒤로가기]");
 				System.out.print("구입할 아이템: ");
 				int num = Game.scan.nextInt();
@@ -107,15 +107,14 @@ public class Shop {
 					if(this.itemList.get(i).kind == sel) {
 						cnt ++;
 						if(cnt == num) {
-							user.iven.addItem(itemList.get(i));
-							user.setMoney(user.getMoney() - itemList.get(i).price);
+							u.getItemList().add(this.itemList.get(i));
+							u.setMoney(u.getMoney() - itemList.get(i).price);
 							
-							System.out.printf("[%s] 을 구입했습니다.\n", this.itemList.get(i).name);
+							System.out.printf("[%s] 을 구입했습니다.\n",this.itemList.get(i).name);
 							System.out.println();
 						}
 					}
 				}
-				
 			}
 		}
 	}

@@ -52,15 +52,14 @@ public class UserController {
 //		return -1;
 //	}
 	
-	public int loginUser(String id, String pw) {
+	public User loginUser(String id, String pw) {
 		
-		int log = -1;
 		for(int i=0; i<this.users.size(); i++) {
 			User u = this.users.get(i);
 			if(u.getID().equals(id) && u.getPW().equals(pw))
-				log = i;
+				return u;
 		}
-		return log;
+		return null;
 	}
 	
 	// 로그인
