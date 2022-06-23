@@ -29,18 +29,18 @@ public class Game {
 				System.out.print("PW: ");
 				String pw = scan.next();
 				
-//				log = uc.loginUser(id, pw);
+				log = UserController.getInstance().loginUser(id, pw);
 				
 				if(log == -1)
 					System.err.println("회원정보를 확인하세요.");
 				else {
-//					System.out.printf("%s 님 로그인 성공\n", uc.getUsers().get(log).getName());
+					System.out.printf("%s 님 로그인 성공\n", UserController.getInstance().getUsers().get(log).getName());
 					GameStart(log);
 				}
 			} else if (sel == 2) {
-//				uc.joinUser();
+				UserController.getInstance().joinUser();
 			} else if (sel == 3) {
-//				uc.printAllPlayer();
+				UserController.getInstance().printAllPlayer();
 			}
 		}
 	}

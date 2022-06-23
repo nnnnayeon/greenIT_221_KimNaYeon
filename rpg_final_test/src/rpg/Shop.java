@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Shop {
 	
 	ArrayList<Item> itemList = new ArrayList<>();
-	
+	UserController instance = UserController.getInstance();
 	
 	public Shop() {
 		 Item temp = new Item();
@@ -73,6 +73,8 @@ public class Shop {
 	}
 	
 	public void printShop(int log) {
+		User user = instance.getUsers().get(log);
+		
 		String[] menu = {"무기", "갑옷", "반지"};
 		while(true) {
 			System.out.println("-----------상점-----------");
@@ -94,7 +96,7 @@ public class Shop {
 				}
 				printItems(sel);
 				
-				System.out.printf("-> 소유한 골드: %d\n", UserController.getInstance().getUsers().get(log).getMoney());
+				System.out.printf("-> 소유한 골드: %d\n", instance.getUsers().get(log).getMoney());
 				System.out.println("[0.뒤로가기]");
 				System.out.print("구입할 아이템: ");
 				int num = Game.scan.nextInt();
@@ -105,8 +107,10 @@ public class Shop {
 					if(this.itemList.get(i).kind == sel) {
 						cnt ++;
 						if(cnt == num) {
-							User.iven.addItem(itemList.get(i));
+							user.iven.addItem(itemList.get(i));
+							user.setMoney(user.getMoney() - itemList.get(i).price);
 							
+							System.out.printf("[%s] 을 구입했습니다.", this.itemList.get(i).name);
 						}
 					}
 				}
