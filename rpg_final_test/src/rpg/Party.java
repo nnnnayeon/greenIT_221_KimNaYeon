@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Party {
 	
-	private ArrayList<Unit> partyList = new ArrayList<>();	/////////////////////////
+	private ArrayList<Unit> partyList = new ArrayList<>();	///////////////////////// 
 //	Guild guild = new Guild();
 	
 	public void partyMenu(User u) {
