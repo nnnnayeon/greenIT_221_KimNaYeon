@@ -31,10 +31,10 @@ public class Guild {
 			int sel = Game.scan.nextInt();
 			
 			if(sel == 1) {
-				printMyGuild(u);}
+				u.printMyGuild(u);}
 			else if(sel == 2) {buyGuild(u);}
 			else if(sel == 3) {removeUnit(u);}
-			else if(sel == 4) {}
+			else if(sel == 4) {partyMenu(u);}
 			else if(sel == 0) {break;}
 			
 		}
@@ -76,7 +76,7 @@ public class Guild {
 			return;
 		}
 		else {
-			printMyGuild(u);
+			u.printMyGuild(u);
 			System.out.println("삭제할 번호 입력 [0.뒤로가기] : ");
 			int sel = Game.scan.nextInt() -1;
 			
@@ -115,47 +115,57 @@ public class Guild {
 			if(sel == 1) {addParty(u);}
 			else if(sel == 2) {deleteParty(u);}
 			else if(sel == 3) {}
-			else if(sel == 4) {}
+			else if(sel == 4) {u.printMyParty(u);}
 			else if(sel == 0) {break;}
 		}
 	}
 	
 	// 파티원 추가
 	public void addParty(User u) {
+		if(u.getMyGuildList().size() == 0) {
+			System.err.println("파티에 참가할 길드원이 없습니다.");
+			return;
+		}
 		while(true) {
-			if(u.getMyGuildList().size() == 0) {
-				System.err.println("파티에 참가할 길드원이 없습니다.");
+			if(u.getPartyList().size() >= 4) {
+				System.err.println("파티참가 최대 인원은 4명입니다.");
 				break;
 			}
-			while(true) {
-				if(u.getPartyList().size() > 0) {
-					System.out.println("파티참가 최대 인원은 4명입니다.");
-				}
-				printMyGuild(u);
-				System.out.println("파티에 참가할 길드원 입력 [0.뒤로가기] : ");
-				int sel = Game.scan.nextInt() -1;
+			u.printMyGuild(u);
+			System.out.println("파티에 참가할 길드원 입력 [0.뒤로가기] : ");
+			int sel = Game.scan.nextInt() -1;
+			
+			if(sel == -1)
+				break;
+			if(sel >= 0 && sel < u.getMyGuildList().size()) {
+				u.getMyGuildList().get(sel).party = true;
+//				u.getPartyList().get(sel).party = true;
+				u.getPartyList().add(u.getMyGuildList().get(sel));
 				
-				if(sel == -1)
-					break;
-				if(sel >= 0 && sel < u.getMyGuildList().size()) {
-					u.getPartyList().add(u.getMyGuildList().get(sel));
-					System.out.printf("[%s] 가 파티에 참가했습니다.\n", u.getMyGuildList().get(sel).name);
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO: handle exception
-						e.printStackTrace();
-					}
+//				u.getMyGuildList().remove(sel)
+				
+				System.out.printf("[%s] 가 파티에 참가했습니다.\n", u.getMyGuildList().get(sel).name);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO: handle exception
+					e.printStackTrace();
 				}
-				else
-					System.err.println("잘못된 입력입니다.");
 			}
+			else
+				System.err.println("잘못된 입력입니다.");
 		}
 	}
 	
 	// 파티원 삭제
 	public void deleteParty(User u) {
-		
+		if(u.getPartyList().size() == 0) {
+			System.err.println("삭제할 파티원이 없습니다.");
+			return;
+		}
+		else {
+			
+		}
 	}
 	
 	//print
@@ -172,15 +182,26 @@ public class Guild {
 		System.out.println("-----------------------------");
 	}
 	
-	public void printMyGuild(User u) {
-		System.out.println("=============길드원=============");
-		for(int i=0; i<u.getMyGuildList().size(); i++) {
-			System.out.printf("%d번) ", i+1);
-			System.out.printf("[이름 : %s] [레벨 : %d] [체력 : %d / %d]\n", u.getMyGuildList().get(i).name, u.getMyGuildList().get(i).level, u.getMyGuildList().get(i).hp, u.getMyGuildList().get(i).maxHp);
-			System.out.printf("[공격력 : %d] [방어력 : %d] [파티중 : %b]\n", u.getMyGuildList().get(i).att, u.getMyGuildList().get(i).def, u.getMyGuildList().get(i).party);
-			System.out.println();
-		}
-		System.out.println("==============================");
-	}
+//	public void printMyGuild(User u) {
+//		System.out.println("=============길드원=============");
+//		for(int i=0; i<u.getMyGuildList().size(); i++) {
+//			System.out.printf("%d번) ", i+1);
+//			System.out.printf("[이름 : %s] [레벨 : %d] [체력 : %d / %d]\n", u.getMyGuildList().get(i).name, u.getMyGuildList().get(i).level, u.getMyGuildList().get(i).hp, u.getMyGuildList().get(i).maxHp);
+//			System.out.printf("[공격력 : %d] [방어력 : %d] [파티중 : %b]\n", u.getMyGuildList().get(i).att, u.getMyGuildList().get(i).def, u.getMyGuildList().get(i).party);
+//			System.out.println();
+//		}
+//		System.out.println("==============================");
+//	}
+	
+//	public void printMyParty(User u) {
+//		System.out.println("-------------파티원------------");
+//		for(int i=0; i<u.getPartyList().size(); i++) {
+//			System.out.printf("%d번) ", i+1);
+//			System.out.printf("[이름 : %s] [레벨 : %d] [체력 : %d / %d]\n", u.getPartyList().get(i).name, u.getPartyList().get(i).level, u.getPartyList().get(i).hp, u.getPartyList().get(i).maxHp);
+//			System.out.printf("[공격력 : %d] [방어력 : %d] [파티중 : %b]\n", u.getPartyList().get(i).att, u.getPartyList().get(i).def, u.getPartyList().get(i).party);
+//			System.out.println();
+//		}
+//		System.out.println("-----------------------------");
+//	}
 
 }

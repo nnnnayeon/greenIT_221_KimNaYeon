@@ -69,4 +69,29 @@ public class User {
 		return this.partyList.size();
 	}
 	
+	
+	// 내 길드원 print
+	public void printMyGuild(User u) {
+		System.out.println("=============길드원=============");
+		for(int i=0; i<getMyGuildList().size(); i++) {
+			System.out.printf("%d번) ", i+1);
+			System.out.printf("[이름 : %s] [레벨 : %d] [체력 : %d / %d]\n", getMyGuildList().get(i).name, getMyGuildList().get(i).level, getMyGuildList().get(i).hp, getMyGuildList().get(i).maxHp);
+			System.out.printf("[공격력 : %d] [방어력 : %d] [파티중 : %b]\n", getMyGuildList().get(i).att, getMyGuildList().get(i).def, getMyGuildList().get(i).party);
+			System.out.println();
+		}
+		System.out.println("==============================");
+	}
+	
+	// 파티원 print
+	public void printMyParty(User u) {
+		System.out.println("-------------파티원------------");
+		for(int i=0; i<getPartyList().size(); i++) {
+			System.out.printf("%d번) ", i+1);
+			System.out.printf("[이름 : %s] [레벨 : %d] [체력 : %d / %d]\n", getPartyList().get(i).name, getPartyList().get(i).level, getPartyList().get(i).hp, getPartyList().get(i).maxHp);
+			System.out.printf("[공격력 : %d] [방어력 : %d] [파티중 : %b]\n", getPartyList().get(i).att, getPartyList().get(i).def, getPartyList().get(i).party);
+			System.out.println();
+		}
+		System.out.println("-----------------------------");
+	}
+	
 }
