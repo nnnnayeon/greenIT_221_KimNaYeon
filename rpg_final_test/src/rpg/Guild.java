@@ -83,16 +83,15 @@ public class Guild {
 			if(sel == -1)
 				return;
 			if(sel >= 0 && sel < u.getMyGuildList().size()) {
-				int cnt = 0;
 				
-				if(u.getMyGuildList().get(sel).party) {
-					System.out.println("파티중인 멤버는 삭제할 수 없습니다.");
+				if(u.getMyGuildList().get(sel).party == true) {
+					System.out.println("파티 참가중인 멤버는 삭제할 수 없습니다.");
 				}
 				else {
-					u.getMyGuildList().remove(sel);
 					System.out.println("-----------------------------");
 					System.out.printf("[이름 : %s] 길드원을 삭제합니다.\n", u.getMyGuildList().get(sel).name);
 					System.out.println("-----------------------------");
+					u.getMyGuildList().remove(sel);
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
@@ -101,6 +100,8 @@ public class Guild {
 					}
 				}
 			}
+			else
+				System.err.println("잘못된 입력");
 		}
 	}
 	
@@ -132,7 +133,7 @@ public class Guild {
 				break;
 			}
 			u.printMyGuild(u);
-			System.out.println("파티에 참가할 길드원 입력 [0.뒤로가기] : ");
+			System.out.print("파티에 참가할 길드원 입력 [0.뒤로가기] : ");
 			int sel = Game.scan.nextInt() -1;
 			
 			if(sel == -1)
@@ -164,6 +165,12 @@ public class Guild {
 			return;
 		}
 		else {
+			u.printMyParty(u);
+			System.out.print("삭제할 번호 입력 [0.뒤로가기] : ");
+			int sel = Game.scan.nextInt() -1;
+			
+			if(sel == -1)
+				return;
 			
 		}
 	}
