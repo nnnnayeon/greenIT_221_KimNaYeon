@@ -50,7 +50,7 @@ public class Inventory {
 				break;
 			if(sel >= 0 && sel < u.getItemList().size()) {
 				u.getItemList().remove(sel);
-				System.out.printf("[%s] 를 판매합니다.\n", u.getItemList().get(sel-1).name);
+				System.out.printf("[%s] 를 판매합니다.\n", u.getItemList().get(sel).name);
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {

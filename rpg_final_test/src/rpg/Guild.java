@@ -40,6 +40,7 @@ public class Guild {
 		}
 	}
 	
+	// 길드원 추가
 	public void buyGuild(User u) {
 		while(true) {
 			if(u.getMoney() < 5000) {
@@ -68,8 +69,9 @@ public class Guild {
 		}
 	}
 	
+	// 길드원 삭제
 	public void removeUnit(User u) {
-		if(u.getMyGuildList() == null) {
+		if(u.getMyGuildList().size() == 0) {
 			System.err.println("삭제할 길드원이 없습니다. ");
 			return;
 		}
@@ -81,13 +83,82 @@ public class Guild {
 			if(sel == -1)
 				return;
 			if(sel >= 0 && sel < u.getMyGuildList().size()) {
+				int cnt = 0;
 				
+				if(u.getMyGuildList().get(sel).party) {
+					System.out.println("파티중인 멤버는 삭제할 수 없습니다.");
+				}
+				else {
+					u.getMyGuildList().remove(sel);
+					System.out.println("-----------------------------");
+					System.out.printf("[이름 : %s] 길드원을 삭제합니다.\n", u.getMyGuildList().get(sel).name);
+					System.out.println("-----------------------------");
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO: handle exception
+						e.printStackTrace();
+					}
+				}
 			}
-			
 		}
+	}
+	
+	// 파티 메뉴
+	public void partyMenu(User u) {
+		while(true) {
+			System.out.println("----------파티관리---------");
+			System.out.println("1)파티원추가 2)파티원삭제 3)파티원교체");
+			System.out.println("4)파티원목록 0)뒤로가기");
+			int sel = Game.scan.nextInt();
+			
+			if(sel == 1) {addParty(u);}
+			else if(sel == 2) {deleteParty(u);}
+			else if(sel == 3) {}
+			else if(sel == 4) {}
+			else if(sel == 0) {break;}
+		}
+	}
+	
+	// 파티원 추가
+	public void addParty(User u) {
+		while(true) {
+			if(u.getMyGuildList().size() == 0) {
+				System.err.println("파티에 참가할 길드원이 없습니다.");
+				break;
+			}
+			while(true) {
+				if(u.getPartyList().size() > 0) {
+					System.out.println("파티참가 최대 인원은 4명입니다.");
+				}
+				printMyGuild(u);
+				System.out.println("파티에 참가할 길드원 입력 [0.뒤로가기] : ");
+				int sel = Game.scan.nextInt() -1;
+				
+				if(sel == -1)
+					break;
+				if(sel >= 0 && sel < u.getMyGuildList().size()) {
+					u.getPartyList().add(u.getMyGuildList().get(sel));
+					System.out.printf("[%s] 가 파티에 참가했습니다.\n", u.getMyGuildList().get(sel).name);
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO: handle exception
+						e.printStackTrace();
+					}
+				}
+				else
+					System.err.println("잘못된 입력입니다.");
+			}
+		}
+	}
+	
+	// 파티원 삭제
+	public void deleteParty(User u) {
 		
 	}
 	
+	//print
 	public void printAllGuild(User u) {
 		System.out.println("-----------------------------");
 		System.out.printf("[골드 : %d]\n", u.getMoney());
@@ -104,6 +175,7 @@ public class Guild {
 	public void printMyGuild(User u) {
 		System.out.println("=============길드원=============");
 		for(int i=0; i<u.getMyGuildList().size(); i++) {
+			System.out.printf("%d번) ", i+1);
 			System.out.printf("[이름 : %s] [레벨 : %d] [체력 : %d / %d]\n", u.getMyGuildList().get(i).name, u.getMyGuildList().get(i).level, u.getMyGuildList().get(i).hp, u.getMyGuildList().get(i).maxHp);
 			System.out.printf("[공격력 : %d] [방어력 : %d] [파티중 : %b]\n", u.getMyGuildList().get(i).att, u.getMyGuildList().get(i).def, u.getMyGuildList().get(i).party);
 			System.out.println();
