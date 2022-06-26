@@ -109,14 +109,13 @@ public class Guild {
 	public void partyMenu(User u) {
 		while(true) {
 			System.out.println("----------파티관리---------");
-			System.out.println("1)파티원추가 2)파티원삭제 3)파티원교체");
-			System.out.println("4)파티원목록 0)뒤로가기");
+			System.out.println("1)파티원추가 2)파티원삭제");
+			System.out.println("3)파티원목록 0)뒤로가기");
 			int sel = Game.scan.nextInt();
 			
 			if(sel == 1) {addParty(u);}
 			else if(sel == 2) {deleteParty(u);}
-			else if(sel == 3) {}
-			else if(sel == 4) {u.printMyParty(u);}
+			else if(sel == 3) {u.printMyParty(u);}
 			else if(sel == 0) {break;}
 		}
 	}
@@ -171,7 +170,20 @@ public class Guild {
 			
 			if(sel == -1)
 				return;
-			
+			if(sel >= 0 && sel < u.getPartyList().size()) {
+				System.out.println("-----------------------------");
+				System.out.printf("[이름 : %s] 파티원을 삭제합니다.\n", u.getPartyList().get(sel).name);
+				System.out.println("-----------------------------");
+				u.getPartyList().remove(sel);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+			else
+				System.err.println("잘못된 입력");
 		}
 	}
 	
@@ -187,6 +199,10 @@ public class Guild {
 			System.out.println();
 		}
 		System.out.println("-----------------------------");
+	}
+	
+	public void printUnitStatus(int num) {
+		guildList.get(num).printStatus();
 	}
 	
 //	public void printMyGuild(User u) {

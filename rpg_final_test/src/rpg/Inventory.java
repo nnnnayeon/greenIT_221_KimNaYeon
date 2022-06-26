@@ -35,7 +35,29 @@ public class Inventory {
 	}
 	
 	public void equipMenu(User u) {
-		printItemList(u);
+		u.printMyGuild(u);
+		System.out.println("아이템 착용할 길드원 선택: ");
+		int sel = Game.scan.nextInt();
+		
+		while(true) {
+			u.getPartyList().get(sel).printStatus();
+			printItemList(u);
+			System.out.println("착용할 아이템 번호 입력 [0.뒤로가기] : ");
+			int num = Game.scan.nextInt();
+			
+			if(num == 0)
+				break;
+			num --;
+			if(u.getItemList().get(num).kind == Item.WEAPON) {
+				
+			}
+			else if(u.getItemList().get(num).kind == Item.ARMOR) {
+				
+			}
+			else if(u.getItemList().get(num).kind == Item.RING) {
+				
+			}
+		}
 		
 	}
 	
