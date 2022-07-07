@@ -27,7 +27,7 @@ public class BoardDAO {
 	private String url = "jdbc:mysql://localhost:3306/firstJsp";
 	private String user = "root";
 	private String password = "root";
-	
+	Random ran = new Random();
 	private ArrayList<BoardDTO> board = new ArrayList<>();
 	
 	public Connection getConnection() {
@@ -155,35 +155,84 @@ public class BoardDAO {
 	}
 	
 	public int getCode() {
-		Random ran = new Random();
+		ran = new Random();
+		conn = DBManager.getConnection("firstjsp");
+		
+		int num = -1;
+		
 		while(true) {
-			int code = ran.nextInt(8999)+1000;
-			conn = DBManager.getConnection("firstjsp");
-			String sql = "select * from board";
-			
-			
+			int code = ran.nextInt(8999)+ 1000;
+				
 			try {
+				String sql = String.format("select count(*) from board where code = %d", code);
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				
-				if(rs.getInt(2) != code) {
-					return code;			
+				while(rs.next()) {
+					num = rs.getInt(1);
 				}
-			}
-			catch(Exception e) {
+				
+			} catch (Exception e) {
+				// TODO: handle exception
 				e.printStackTrace();
-			} finally {
-				try {
-					conn.close();
-					pstmt.close();
-					rs.close();
-				} catch (Exception e2) {
-					// TODO: handle exception
-				}
+			}
+			if(num == 0) {
+				return code;
 			}
 		}
+		
 	}
 	
+	public int getCodes() {
+		int code = ran.nextInt(8999)+1000;
+		conn = DBManager.getConnection("firstjsp");
+		String sql = "select * from board where code = ? ";
+		 
+		try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, code);
+				
+				rs = pstmt.executeQuery();
+				
+				while(true) {
+					 code = ran.nextInt(8999)+1000;
+					
+					if(!rs.next()) {
+						return code;
+					}
+				
+				}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		return -1;
+	
+	}
+	
+//
+//			try {
+//				String sql = "select * from board";
+//				while (true) {
+//					
+//					int code = ran.nextInt(8999) + 1000;
+//
+//				if (rs.getInt(2) != code) {
+//					return code;
+//				}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			} finally {
+//				try {
+//					conn.close();
+//					pstmt.close();
+//					rs.close();
+//				} catch (Exception e2) {
+//					// TODO: handle exception
+//				}
+//			}
+//		}
 
 
 }

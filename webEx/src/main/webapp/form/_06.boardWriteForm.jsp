@@ -10,11 +10,11 @@
 <body>
     <h1>GREEN BOARD</h1>
     <div class="formContainer">
-        <form method="post" action="_07.boardWriteFormPro">
+        <form method="post" action="_07.boardWriteFormPro.jsp">
             <input type="text" id="title" name="title" placeholder="title" required><br>
             <textarea name="contents" placeholder="contents text" required></textarea><br>
             <input type="button" value="뒤로가기" onclick="location.href = '_05.board.jsp'">
-            <input type="submit" value="글쓰기" onclick="">
+            <input type="submit" value="글쓰기">
         </form>
     </div>
 

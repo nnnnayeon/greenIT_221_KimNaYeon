@@ -43,13 +43,15 @@
 					<td><%=dto.getCreateAt()%></td>
 					<td><%=dto.getModifiedAt()%></td>
 				</tr>
-
 				<%
 		            }		            
             }
             %>
 			</tbody>
 		</table>
+		<input type="button" value="뒤로가기" onclick="location.href='_04.main.jsp'">
+		<input type="button" value="글쓰기" onclick="location.href='_06.boardWriteForm.jsp'">
+				
 	</div>
 </body>
 </html>
