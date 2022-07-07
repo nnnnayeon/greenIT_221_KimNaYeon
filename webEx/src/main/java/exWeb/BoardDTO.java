@@ -5,20 +5,26 @@ public class BoardDTO {
 	private int no, code;
 	private String title, contents;
 	private int viewCnt, likeCnt;
-	private int year, month, day;
+	private String createAt, modifiedAt;
 	
-	private int createAt, modifiedAt;
-	
-	public BoardDTO(int no, int code, String title, String contents, int viewCnt, int likeCnt, int year, int month, int day) {
+	public BoardDTO(int no, int code, String title, String contents, int viewCnt, int likeCnt) {
 		this.no = no;
 		this.code = code;
 		this.title = title;
 		this.contents = contents;
 		this.viewCnt = viewCnt;
 		this.likeCnt = likeCnt;
-		this.year = year;
-		this.month = month;
-		this.day = day;
+	}
+	
+	public BoardDTO(int no, int code, String title, String contents, int viewCnt, int likeCnt, String createAt, String modifiedAt) {
+		this.no = no;
+		this.code = code;
+		this.title = title;
+		this.contents = contents;
+		this.viewCnt = viewCnt;
+		this.likeCnt = likeCnt;
+		this.createAt = createAt;
+		this.modifiedAt = modifiedAt;
 	}
 
 	public int getNo() {
@@ -29,19 +35,19 @@ public class BoardDTO {
 		this.no = no;
 	}
 
-	public int getCreateAt() {
+	public String getCreateAt() {
 		return createAt;
 	}
 
-	public void setCreateAt(int createAt) {
+	public void setCreateAt(String createAt) {
 		this.createAt = createAt;
 	}
 
-	public int getModifiedAt() {
+	public String getModifiedAt() {
 		return modifiedAt;
 	}
 
-	public void setModifiedAt(int modifiedAt) {
+	public void setModifiedAt(String modifiedAt) {
 		this.modifiedAt = modifiedAt;
 	}
 
@@ -84,33 +90,5 @@ public class BoardDTO {
 	public void setLikeCnt(int likeCnt) {
 		this.likeCnt = likeCnt;
 	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
-	}
-
-	public int getMonth() {
-		return month;
-	}
-
-	public void setMonth(int month) {
-		this.month = month;
-	}
-
-	public int getDay() {
-		return day;
-	}
-
-	public void setDay(int day) {
-		this.day = day;
-	}
-
-
-	
-	
 
 }

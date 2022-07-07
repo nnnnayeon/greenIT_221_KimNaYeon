@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Random;
 
 import util.DBManager;
@@ -27,6 +28,8 @@ public class BoardDAO {
 	private String user = "root";
 	private String password = "root";
 	
+	private ArrayList<BoardDTO> board = new ArrayList<>();
+	
 	public Connection getConnection() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -39,43 +42,88 @@ public class BoardDAO {
 		}
 	}
 	
-	public boolean addBoard(BoardDTO boardDto) {
+	public ArrayList<BoardDTO> getBoardDto() {
 		conn = DBManager.getConnection("firstJsp");
-		
-		String sql = "insert into board values(?,?,?,?,?,?,?,?)";
-		
-		Date date = new Date(boardDto.getYear()-1900,boardDto.getMonth()-1,boardDto.getDay());
-		Timestamp createdAt = new Timestamp(date.getTime());
+		String sql = "select * from board";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
 			
-			pstmt.setString(1, sql);
-			pstmt.setString(2, sql);
+			int no, code;
+			String title, contents;
+			int viewCnt, likeCnt;
+			String createAt, modifiedAt;
+			
+			while(rs.next()) {
+				no = rs.getInt(1);
+				code = rs.getInt(2);
+				title = rs.getString(3);
+				contents = rs.getString(4);
+				viewCnt = rs.getInt(5);
+				likeCnt = rs.getInt(6);
+				createAt = rs.getString(7);
+				modifiedAt = rs.getString(8);
+				
+				BoardDTO boardDto = new BoardDTO(no,code,title,contents,viewCnt,likeCnt,createAt,modifiedAt);
+				board.add(boardDto);
+			}
+			
+			return board;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		return null;
+	}
+	
+	public int addBoard(BoardDTO boardDto) {
+		conn = DBManager.getConnection("firstJsp");
+		
+		String sql = "insert into board values(?,?,?,?,?,?,?,?)";
+		board.add(boardDto);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardDto.getNo());
+			pstmt.setInt(2, boardDto.getCode());
 			pstmt.setString(3, boardDto.getTitle());
 			pstmt.setString(4, boardDto.getContents());
-			pstmt.setString(5, null);
-			pstmt.setString(6, null);
-			pstmt.setString(7, sql);
-			pstmt.setString(8, null);
+			pstmt.setInt(5, boardDto.getViewCnt());
+			pstmt.setInt(6, boardDto.getLikeCnt());
+			
+			Timestamp createAt = new Timestamp(System.currentTimeMillis());
+			
+			pstmt.setTimestamp(7, createAt);
+			pstmt.setTimestamp(8, createAt);
+			
+			return pstmt.executeUpdate();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-//		int no = boardDto.getNo();
-//		
-//		int code = boardDto.getCode();
-//		
-//		String title = boardDto.getTitle();
-//		String contects = boardDto.getContents();
-//		
-//		int viewCnt = boardDto.getViewCnt();
-//		int likeCnt = boardDto.getLikeCnt();
-//		
-//		String sql = String.format("insert into board values()");
+		return -1;
 		
 	}
+	
+	
+	public int getArrayListSize() {
+		int cnt = 0;
+		
+		cnt = board.size();
+		return  cnt;
+	}
+	
 	
 	public int getSize() {
 		String sql = "select count(*) from board";
@@ -136,5 +184,6 @@ public class BoardDAO {
 		}
 	}
 	
+
 
 }
