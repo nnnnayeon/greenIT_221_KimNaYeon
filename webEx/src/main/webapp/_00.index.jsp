@@ -23,7 +23,7 @@
 	*/
 	%>
 	<h1>LOGIN</h1>
-	<form method="post" action="_00.loginPro.jsp">
+	<form method="post" action="./login">
 		<div class="contentss">
 			<input class="req" name="id" type="text" placeholder="id">
 			<span class="warning"><br>필수값 입력 바랍니다.<br></span>
@@ -33,8 +33,8 @@
 		</div>
 		
 		<div class="buttons">
-			<input type="button" value="회원가입" onclick="location.href='_01.agree.jsp'">
-			<input type="button" value="로그인" onclick="checkJoinVal(form)"> 
+			<input type="button" value="회원가입" onclick="location.href='./agree'">
+			 <input type="submit"  onclick="check(form)" value="로그인" >
 		</div>
 	</form>
 	

@@ -13,7 +13,7 @@
 </head>
 <body>
     <h1>GREEN</h1>
-    <form method="post" action="_03.joinPro.jsp">
+    <form method="post" action="./join">
         <div class="contents">
             <input class="req" name="id" type="text" placeholder="id">
             <span class="warning"><br>필수값 입력 바랍니다.</span>
@@ -50,7 +50,7 @@
 
         <div class="buttons">
             <input type="button" value="뒤로" onclick="location.href = '_01.agree.jsp'">
-            <input type="button" value="확인" onclick="checkJoinVal(form)">
+            <input type="submit" value="확인" onclick="checkJoinVal(form)">
         </div>
     </form>
 
