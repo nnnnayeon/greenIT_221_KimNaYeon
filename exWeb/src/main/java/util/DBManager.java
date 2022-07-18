@@ -17,10 +17,10 @@ public class DBManager {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
 			if(conn != null)
-				System.out.println("DB¿¬µ¿ ¼º°ø");
+				System.out.println("DBì—°ë™ ì„±ê³µ");
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("DB¿¬µ¿ ½ÇÆĞ");
+			System.out.println("DBì—°ë™ ì‹¤íŒ¨");
 		}
 		
 		return conn;
